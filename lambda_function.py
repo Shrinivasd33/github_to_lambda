@@ -36,6 +36,13 @@ def lambda_handler(event, context):
     
     # Safely access the response content
     output = chat_response.choices[0].message.content
+
+    d = {'col1': [1,2], 'col2': [3,4]}
+    df = pd.DataFrame(data=d)
+    print(df)
+    print('Done x1.1')
+
+
     
     # Return the output in the Lambda response
     return {
