@@ -40,16 +40,27 @@ def lambda_handler(event, context):
 
     d = {'col1': [1,2], 'col2': [3,4]}
     df = pd.DataFrame(data=d)
-    print(df)
     print('Done latest babde')
 
 
+ # Safely access the response content
+    output = chat_response.choices[0].message.content
+    # Example additional information
+    summary = "This is a summary of the response."
+    timestamp = "2024-11-12T12:34:56Z"
     
-    # Return the output in the Lambda response
+    # Return multiple pieces of information in the Lambda response
     return {
         "statusCode": 200,
         "headers": {
             "Content-Type": "application/json"
         },
-        "body": json.dumps({"response": output})
+        "body": json.dumps({
+            "response": output,
+            "summary": summary,
+            "timestamp": timestamp,
+            "df": df
+        })
+
+
     }
