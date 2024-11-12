@@ -1,6 +1,7 @@
 import openai
 import os
 import json
+import pandas as pd
 
 def lambda_handler(event, context):
     # Fetch the OpenAI API key from environment variables - FROM GIT
